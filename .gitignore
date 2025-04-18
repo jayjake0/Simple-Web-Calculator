@@ -4,3 +4,9 @@ package.json
 package-lock.json
 node_modules
 imgs/preview_img.png
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
