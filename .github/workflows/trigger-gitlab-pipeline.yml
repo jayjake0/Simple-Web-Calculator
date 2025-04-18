@@ -6,7 +6,7 @@ on:
 
 jobs:
   trigger-gitlab:
-    runs-on: ubuntu
+    runs-on: my-ubuntu
     steps:
       - name: Trigger GitLab CI/CD
         env:
