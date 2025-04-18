@@ -1,0 +1,20 @@
+name: Trigger GitLab Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]  # Add branches to monitor
+
+jobs:
+  trigger-gitlab:
+    runs-on: ubuntu
+    steps:
+      - name: Trigger GitLab CI/CD
+        env:
+          GITLAB_PROJECT_ID: ${{ secrets.GITLAB_PROJECT_ID }}
+          GITLAB_TRIGGER_TOKEN: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
+          BRANCH_NAME: ${{ github.ref_name }}  # Gets the pushed branch name
+        run: |
+          curl -X POST \
+            -F "token=${GITLAB_TRIGGER_TOKEN}" \
+            -F "ref=${BRANCH_NAME}" \
+            "https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/trigger/pipeline"
