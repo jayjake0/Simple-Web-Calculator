@@ -1,0 +1,10 @@
+stages:
+  - test
+
+playwright_tests:
+  stage: test
+  script:
+    - npm ci                # Install dependencies reliably for CI
+    # - npm start &           # Start your JS app (adjust this command as needed)
+    - sleep 5               # Wait for the server to start
+    - npx playwright test   # Run Playwright tests

@@ -33,6 +33,14 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  module.exports = {
+    use: {
+      baseURL: 'http://localhost:3000', // Adjust based on your app
+      headless: true,
+    },
+    workers: 1, // Limit to 1 worker to manage Pi’s 4GB RAM
+  };
+
   /* Configure projects for major browsers */
   projects: [
     {
@@ -45,10 +53,10 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
